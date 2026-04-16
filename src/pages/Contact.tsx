@@ -1,12 +1,14 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
+import ContactFormSection from "@/components/ContactFormSection";
 
-export default function Index() {
+export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
+      <div className="pt-16">
+        <ContactFormSection />
+      </div>
       <Footer />
     </div>
   );
