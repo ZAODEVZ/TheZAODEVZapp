@@ -57,7 +57,7 @@ export default function ContactFormSection() {
             Questions? We're Here to Help
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Whether you have a question about our services, need more info, or want to explore a partnership — reach out.
+            Whether you have a question about our services, need more info, or want to explore a partnership, reach out.
           </p>
         </motion.div>
 

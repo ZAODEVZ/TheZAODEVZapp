@@ -26,7 +26,7 @@ const initialForm: FormData = {
 };
 
 const perks = [
-  { icon: Globe, title: "Work From Anywhere", desc: "100% remote — join from any country" },
+  { icon: Globe, title: "Work From Anywhere", desc: "100% remote. Join from any country." },
   { icon: Code2, title: "Cutting-Edge Stack", desc: "Web3, AI, React, Solidity and more" },
   { icon: Users, title: "Global Community", desc: "Collaborate with devs across USA & Africa" },
 ];
@@ -66,7 +66,7 @@ export default function JoinSection() {
             Join ThaZao Devs
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            We're recruiting developers worldwide. Your location doesn't matter — your skills and passion do.
+            We're recruiting developers worldwide. Your location doesn't matter, your skills and passion do.
           </p>
         </motion.div>
 

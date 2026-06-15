@@ -23,7 +23,7 @@ export default function Team() {
                 Want to be part of our team?
               </h2>
               <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-                We're always looking for talented developers worldwide. Your location doesn't matter — your skills do.
+                We're always looking for talented developers worldwide. Your location doesn't matter, your skills do.
               </p>
               <Link
                 to="/join"

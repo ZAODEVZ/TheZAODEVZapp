@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,41 +8,30 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 216 50% 12%;
-
     --card: 0 0% 100%;
     --card-foreground: 216 50% 12%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 216 50% 12%;
-
     --primary: 216 50% 12%;
     --primary-foreground: 42 95% 58%;
-
     --secondary: 220 20% 96%;
     --secondary-foreground: 216 50% 12%;
-
     --muted: 220 15% 95%;
     --muted-foreground: 216 15% 50%;
-
     --accent: 42 95% 58%;
     --accent-foreground: 216 50% 12%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 220 15% 90%;
     --input: 220 15% 90%;
     --ring: 42 95% 58%;
-
     --radius: 0.75rem;
-
     --gold: 42 95% 58%;
     --gold-light: 42 90% 70%;
     --gold-dark: 38 90% 45%;
     --navy: 216 50% 12%;
     --navy-light: 216 40% 20%;
     --navy-dark: 216 60% 8%;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -55,20 +44,166 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground font-body antialiased;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-body antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-heading; }
 }
 
 @layer utilities {
+  /* ── Text ── */
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(42 95% 58%), hsl(38 90% 45%));
+    background-image: linear-gradient(135deg, hsl(42 95% 72%), hsl(38 90% 52%), hsl(42 95% 62%));
   }
+
+  .text-glow-gold {
+    text-shadow: 0 0 24px rgba(234,179,8,0.55), 0 0 48px rgba(234,179,8,0.25);
+  }
+
+  /* ── Glass ── */
+  .glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .glass-dark {
+    background: rgba(4,8,15,0.5);
+    backdrop-filter: blur(28px) saturate(1.6);
+    -webkit-backdrop-filter: blur(28px) saturate(1.6);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* ── 3D Cards ── */
+  .card-3d {
+    background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.07),
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      0 24px 64px rgba(0,0,0,0.45),
+      0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  .card-3d-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-3d-hover:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1px rgba(234,179,8,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      0 32px 80px rgba(0,0,0,0.5),
+      0 0 32px rgba(234,179,8,0.08);
+  }
+
+  /* ── Glow ── */
+  .glow-gold {
+    box-shadow: 0 0 24px rgba(234,179,8,0.45), 0 0 64px rgba(234,179,8,0.18);
+  }
+  .glow-gold-sm {
+    box-shadow: 0 0 14px rgba(234,179,8,0.38), 0 0 28px rgba(234,179,8,0.15);
+  }
+  .glow-btn {
+    box-shadow:
+      0 8px 32px rgba(234,179,8,0.45),
+      0 2px 8px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+
+  /* ── 3D Icon ── */
+  .icon-3d {
+    position: relative;
+    overflow: hidden;
+  }
+  .icon-3d::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.08) 35%, transparent 60%);
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .icon-3d::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 38%;
+    background: linear-gradient(to top, rgba(0,0,0,0.28), transparent);
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* ── Shimmer button ── */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 55%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer-sweep 3s ease-in-out infinite;
+  }
+
+  /* ── Gradient border ── */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(234,179,8,0.5), rgba(139,92,246,0.2), rgba(234,179,8,0.15));
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* ── Scrollbar ── */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  /* ── Grid overlay ── */
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* ── Keyframes (used via inline style or Tailwind animation) ── */
+@keyframes shimmer-sweep {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-18px) rotate(1deg); }
+  66%       { transform: translateY(-9px) rotate(-0.5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.06); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
