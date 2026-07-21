@@ -37,6 +37,12 @@ export interface ZaoApp {
   flagship?: boolean;
   /** official ZAO ecosystem property */
   verified: boolean;
+  /**
+   * "public" apps launch in a new tab. "inhouse" tools run inside the ZAO
+   * and are not publicly launchable — the card shows what they do but has
+   * no external link. Defaults to "public" when omitted.
+   */
+  access?: "public" | "inhouse";
 }
 
 /**
@@ -117,19 +123,20 @@ export const APPS: ZaoApp[] = [
     category: "Governance",
     description:
       "The weekly Fractal governance ritual. Contribution is measured on-chain and rewarded along a Fibonacci curve, issued as Respect on Optimism (a soulbound OG ERC-20 and a ZOR ERC-1155). Decisions execute through OREC with a 72-hour vote and 72-hour veto window.",
-    url: "https://thezao.xyz",
+    url: "",
     launchLabel: "Enter",
     icon: Trophy,
     grad: ["#eab308", "#f59e0b"],
     glow: "rgba(234,179,8,0.5)",
     rating: 4.8,
     metric: "100+ weeks · 156 holders",
-    status: "Live",
+    status: "Internal",
     chains: ["Optimism"],
     tags: ["Governance", "Web3", "Respect", "DAO"],
-    badge: "100+ Weeks",
+    badge: null,
     featured: false,
     verified: true,
+    access: "inhouse",
   },
   {
     id: 5,
@@ -180,19 +187,20 @@ export const APPS: ZaoApp[] = [
     category: "AI",
     description:
       "The AI operator at the center of the ZAO integration map. Delivers morning briefs and evening reflections, escalates critical alerts, and turns meeting recordings into recaps, with the cowork board as its hub of record. Autonomy with a brake: money and on-chain actions stay human-gated.",
-    url: "https://thezao.xyz",
+    url: "",
     launchLabel: "Meet ZOE",
     icon: Bot,
     grad: ["#2ee6a6", "#14b8a6"],
     glow: "rgba(46,230,166,0.5)",
     rating: 4.8,
     metric: "Always-on · human-gated",
-    status: "AI",
+    status: "Internal",
     chains: [],
     tags: ["AI", "Automation", "Ops", "Orchestrator"],
-    badge: "AI Operator",
+    badge: null,
     featured: false,
     verified: true,
+    access: "inhouse",
   },
   {
     id: 8,

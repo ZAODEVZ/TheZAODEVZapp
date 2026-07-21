@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { Search, Star, Sparkles, ExternalLink, BadgeCheck, ArrowUpDown } from "lucide-react";
+import { Search, Star, Sparkles, ExternalLink, BadgeCheck, ArrowUpDown, Lock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppIconTile from "@/components/AppIconTile";
@@ -75,11 +75,18 @@ function VisitButton({ label }: { label: string }) {
 }
 
 function MetaRow({ app }: { app: ZaoApp }) {
+  const inhouse = app.access === "inhouse";
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      <Chip>
-        <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" /> {app.status}
-      </Chip>
+      {inhouse ? (
+        <Chip>
+          <Lock size={10} className="text-slate-300" /> In-House
+        </Chip>
+      ) : (
+        <Chip>
+          <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" /> {app.status}
+        </Chip>
+      )}
       {app.chains.map((c) => (
         <Chip key={c}>{c}</Chip>
       ))}
@@ -139,6 +146,75 @@ function Spotlight({ app }: { app: ZaoApp }) {
 }
 
 function AppCard({ app, index }: { app: ZaoApp; index: number }) {
+  const inhouse = app.access === "inhouse";
+
+  const body = (
+    <>
+      <div
+        className="absolute inset-0 opacity-[0.07] group-hover:opacity-[0.16] transition-opacity duration-300 pointer-events-none"
+        style={{ background: `radial-gradient(ellipse at top left, ${app.glow}, transparent 60%)` }}
+      />
+      <div className="relative p-6 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-5">
+          <AppIconTile icon={app.icon} grad={app.grad} glow={app.glow} name={app.name} size="lg" />
+          {inhouse ? (
+            <span className="inline-flex items-center gap-1 text-slate-200 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full" style={{ background: "rgba(148,163,184,0.14)", border: "1px solid rgba(148,163,184,0.32)" }}>
+              <Lock size={10} /> In-House
+            </span>
+          ) : app.badge ? (
+            <span className="text-gold text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full" style={{ background: "rgba(234,179,8,0.12)", border: "1px solid rgba(234,179,8,0.22)" }}>
+              {app.badge}
+            </span>
+          ) : null}
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          <h3 className="font-heading font-black text-white text-xl">{app.name}</h3>
+          {app.verified && <BadgeCheck size={15} className="text-sky-300/90" aria-label="Official ZAO app" />}
+        </div>
+        <span className="text-[11px] font-semibold text-gold/70">{app.tagline}</span>
+        <p className="mt-2.5 text-sm text-white/55 leading-relaxed">{app.description}</p>
+
+        <div className="mt-3 text-[11px] text-white/45 font-medium flex items-center gap-1.5">
+          <Sparkles size={11} className="text-gold/70" /> {app.metric}
+        </div>
+
+        <div className="mt-3.5">
+          <MetaRow app={app} />
+        </div>
+
+        {/* footer pinned to bottom so cards align */}
+        {inhouse ? (
+          <div className="mt-auto pt-5">
+            <div className="flex items-center gap-2.5 rounded-xl px-3.5 py-3" style={{ background: "rgba(148,163,184,0.08)", border: "1px solid rgba(148,163,184,0.18)" }}>
+              <Lock size={14} className="text-slate-300 flex-shrink-0" />
+              <span className="text-[11px] font-semibold text-slate-300/90 leading-snug">
+                Internal ZAO tool. Runs inside the network, not publicly launchable.
+              </span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="mt-auto pt-5 flex items-center justify-between">
+              <Stars rating={app.rating} size="md" />
+              <VisitButton label={app.launchLabel} />
+            </div>
+            <div className="mt-4 pt-4 text-[11px] text-white/25 font-medium" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              {cleanUrl(app.url)}
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
+
+  const shared = "group relative block h-full rounded-2xl overflow-hidden transition-all duration-300";
+  const cardStyle = {
+    background: "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1), 0 24px 56px rgba(0,0,0,0.45)",
+  } as const;
+
   return (
     <motion.div
       layout
@@ -148,56 +224,15 @@ function AppCard({ app, index }: { app: ZaoApp; index: number }) {
       transition={{ duration: 0.25, delay: Math.min(index * 0.05, 0.3) }}
     >
       <TiltCard className="h-full">
-        <a
-          href={app.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block h-full rounded-2xl overflow-hidden transition-all duration-300"
-          style={{
-            background: "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1), 0 24px 56px rgba(0,0,0,0.45)",
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-[0.07] group-hover:opacity-[0.16] transition-opacity duration-300 pointer-events-none"
-            style={{ background: `radial-gradient(ellipse at top left, ${app.glow}, transparent 60%)` }}
-          />
-          <div className="relative p-6 flex flex-col h-full">
-            <div className="flex items-start justify-between mb-5">
-              <AppIconTile icon={app.icon} grad={app.grad} glow={app.glow} name={app.name} size="lg" />
-              {app.badge && (
-                <span className="text-gold text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full" style={{ background: "rgba(234,179,8,0.12)", border: "1px solid rgba(234,179,8,0.22)" }}>
-                  {app.badge}
-                </span>
-              )}
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              <h3 className="font-heading font-black text-white text-xl">{app.name}</h3>
-              {app.verified && <BadgeCheck size={15} className="text-sky-300/90" aria-label="Official ZAO app" />}
-            </div>
-            <span className="text-[11px] font-semibold text-gold/70">{app.tagline}</span>
-            <p className="mt-2.5 text-sm text-white/55 leading-relaxed">{app.description}</p>
-
-            <div className="mt-3 text-[11px] text-white/45 font-medium flex items-center gap-1.5">
-              <Sparkles size={11} className="text-gold/70" /> {app.metric}
-            </div>
-
-            <div className="mt-3.5">
-              <MetaRow app={app} />
-            </div>
-
-            {/* pushes footer to bottom so cards align */}
-            <div className="mt-auto pt-5 flex items-center justify-between">
-              <Stars rating={app.rating} size="md" />
-              <VisitButton label={app.launchLabel} />
-            </div>
-            <div className="mt-4 pt-4 text-[11px] text-white/25 font-medium" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-              {cleanUrl(app.url)}
-            </div>
+        {inhouse ? (
+          <div className={`${shared} cursor-default`} style={cardStyle} aria-label={`${app.name} — internal ZAO tool, not publicly launchable`}>
+            {body}
           </div>
-        </a>
+        ) : (
+          <a href={app.url} target="_blank" rel="noopener noreferrer" className={shared} style={cardStyle}>
+            {body}
+          </a>
+        )}
       </TiltCard>
     </motion.div>
   );
@@ -337,11 +372,16 @@ export default function Apps() {
           {/* Flagship spotlight */}
           {showSpotlight && flagship && <Spotlight app={flagship} />}
 
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between gap-3 mb-5">
             <p className="text-xs text-white/35 font-medium">
               {filtered.length} {filtered.length === 1 ? "app" : "apps"}
               {activeCategory !== "All" && <span> in {activeCategory}</span>}
             </p>
+            {filtered.some((a) => a.access === "inhouse") && (
+              <span className="inline-flex items-center gap-1.5 text-[11px] text-slate-300/70 font-medium">
+                <Lock size={11} className="text-slate-300/80" /> In-House = internal, not publicly launchable
+              </span>
+            )}
           </div>
 
           <AnimatePresence mode="popLayout">
