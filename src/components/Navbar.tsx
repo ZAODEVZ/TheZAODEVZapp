@@ -6,11 +6,11 @@ import logo from "@/assets/thezao-logo.jpg";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
+  { label: "Build", href: "/build" },
+  { label: "Learn", href: "/learn" },
   { label: "Apps", href: "/apps", dot: true },
+  { label: "Projects", href: "/projects" },
   { label: "Team", href: "/team" },
-  { label: "Join Us", href: "/join" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {

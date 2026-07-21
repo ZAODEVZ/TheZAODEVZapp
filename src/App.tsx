@@ -10,6 +10,8 @@ import Team from "./pages/Team";
 import Join from "./pages/Join";
 import Contact from "./pages/Contact";
 import Apps from "./pages/Apps";
+import Learn from "./pages/Learn";
+import Build from "./pages/Build";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/join" element={<Join />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/apps" element={<Apps />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/build" element={<Build />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
