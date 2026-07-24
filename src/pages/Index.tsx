@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ZabalGamezSection from "@/components/ZabalGamezSection";
+import VibeCodePromoSection from "@/components/VibeCodePromoSection";
 import AudienceSection from "@/components/AudienceSection";
 import AppStoreSection from "@/components/AppStoreSection";
 import Footer from "@/components/Footer";
@@ -11,6 +12,7 @@ export default function Index() {
       <Navbar />
       <HeroSection />
       <ZabalGamezSection />
+      <VibeCodePromoSection />
       <AudienceSection />
       <AppStoreSection />
       <Footer />

@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Build", href: "/build" },
   { label: "Learn", href: "/learn" },
+  { label: "Vibe Code", href: "/vibe-code", dot: true },
   { label: "Apps", href: "/apps", dot: true },
   { label: "Projects", href: "/projects" },
   { label: "Team", href: "/team" },
