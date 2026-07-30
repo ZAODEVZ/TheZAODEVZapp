@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ExternalLink, GitBranch, Terminal, GitPullRequest } from "lucide-react";
+import { ArrowRight, ExternalLink, GitBranch, Terminal, GitPullRequest, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Reveal } from "@/components/motion";
@@ -42,6 +42,14 @@ export default function Build() {
               <a href="https://zabalgamez.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-white hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)" }}>
                 Join ZABAL Games <ExternalLink size={16} />
               </a>
+            </Reveal>
+            <Reveal delay={0.16} className="mt-6">
+              <div className="inline-flex items-start gap-3 rounded-2xl px-5 py-4" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)" }}>
+                <Sparkles size={16} className="text-gold flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-white/60 leading-relaxed">
+                  New to AI + Farcaster builds? <Link to="/learn" className="text-gold font-semibold hover:underline">Start with Learn</Link> to get the concepts down before you dive into the stack below.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>

@@ -46,12 +46,6 @@ export default function HeroSection() {
             transition={{ duration: 0.55 }}
             className="flex items-center flex-wrap gap-2.5 mb-8"
           >
-            <span
-              className="px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 text-gold"
-              style={{ background: "rgba(234,179,8,0.1)", border: "1px solid rgba(234,179,8,0.22)", boxShadow: "0 0 18px rgba(234,179,8,0.1)" }}
-            >
-              <Globe size={12} /> Recruiting Worldwide
-            </span>
             <Link
               to="/apps"
               className="px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 text-white/65 hover:text-white transition-colors"
@@ -82,17 +76,32 @@ export default function HeroSection() {
           </motion.h1>
 
           {/* Sub */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.18 }}
-            className="mt-6 text-lg text-white/55 max-w-xl leading-relaxed"
+            className="mt-6 max-w-xl"
           >
-            ThaZao Devs is a global team of elite developers building cutting-edge
-            applications across Web3, FinTech, and enterprise platforms. Teams in the{" "}
-            <strong className="text-gold font-semibold">USA</strong> and{" "}
-            <strong className="text-gold font-semibold">Africa</strong>.
-          </motion.p>
+            <span
+              className="mb-3 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase inline-flex items-center gap-1.5 text-gold"
+              style={{ background: "rgba(234,179,8,0.1)", border: "1px solid rgba(234,179,8,0.22)", boxShadow: "0 0 18px rgba(234,179,8,0.1)" }}
+            >
+              <Globe size={12} /> Recruiting Worldwide
+            </span>
+            <p className="text-lg text-white/55 leading-relaxed">
+              ThaZao Devz is a global team of elite developers building cutting-edge
+              applications across Web3, FinTech, and enterprise platforms. Teams in the{" "}
+              <strong className="text-gold font-semibold">USA</strong> and{" "}
+              <strong className="text-gold font-semibold">Africa</strong>, with{" "}
+              <strong className="text-gold font-semibold">LATAM</strong> next.
+            </p>
+            <Link
+              to="/join"
+              className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold hover:translate-x-0.5 transition-transform"
+            >
+              Building in Africa or LATAM? Join the network <ArrowRight size={13} />
+            </Link>
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
@@ -147,7 +156,7 @@ export default function HeroSection() {
                 >
                   {s.num}
                 </div>
-                <div className="text-[10px] text-white/38 mt-1 font-medium leading-tight">{s.label}</div>
+                <div className="text-[10px] text-white/60 mt-1 font-medium leading-tight">{s.label}</div>
               </div>
             ))}
           </motion.div>

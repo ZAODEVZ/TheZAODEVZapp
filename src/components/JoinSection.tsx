@@ -63,7 +63,7 @@ export default function JoinSection() {
         >
           <span className="text-gold text-sm font-semibold tracking-wider uppercase">Careers</span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-heading font-bold text-foreground">
-            Join ThaZao Devs
+            Join ThaZao Devz
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
             We're recruiting developers worldwide. Your location doesn't matter, your skills and passion do.
@@ -202,7 +202,7 @@ export default function JoinSection() {
                 <label className="block text-sm font-medium text-foreground mb-1.5">About You</label>
                 <textarea
                   rows={4}
-                  placeholder="Tell us about yourself, what excites you about dev work, and why you want to join ThaZao Devs..."
+                  placeholder="Tell us about yourself, what excites you about dev work, and why you want to join ThaZao Devz..."
                   value={form.about}
                   onChange={(e) => update("about", e.target.value)}
                   className={inputClasses + " resize-none"}

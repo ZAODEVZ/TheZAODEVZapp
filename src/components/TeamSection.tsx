@@ -45,7 +45,7 @@ export default function TeamSection() {
             Global Talent, One Mission
           </h2>
           <p className="mt-4 text-white/40 max-w-md mx-auto text-sm leading-relaxed">
-            With teams across the USA and Africa, we bring diverse perspectives to every project.
+            With teams across the USA and Africa, and LATAM builders joining next, we bring diverse perspectives to every project.
           </p>
         </motion.div>
 

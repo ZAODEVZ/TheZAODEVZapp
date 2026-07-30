@@ -43,12 +43,12 @@ export default function Footer() {
                 <div className="absolute inset-0 rounded-full bg-gold/20 blur-md" />
                 <img
                   src={logo}
-                  alt="ThaZao Devs"
+                  alt="ThaZao Devz"
                   className="relative w-10 h-10 rounded-full"
                   style={{ boxShadow: "0 0 0 2px rgba(234,179,8,0.2), 0 4px 16px rgba(0,0,0,0.5)" }}
                 />
               </div>
-              <span className="font-heading font-extrabold text-xl tracking-tight text-white">Devs</span>
+              <span className="font-heading font-extrabold text-xl tracking-tight text-white">Devz</span>
             </div>
             <p className="text-sm text-white/38 leading-relaxed">
               Building world-class software with global teams. Part of the Zao DAO ecosystem.
@@ -95,7 +95,7 @@ export default function Footer() {
           className="mt-14 pt-8 text-center text-xs text-white/22"
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
-          © {new Date().getFullYear()} ThaZao Devs. All rights reserved.
+          © {new Date().getFullYear()} ThaZao Devz. All rights reserved.
         </div>
       </div>
     </footer>

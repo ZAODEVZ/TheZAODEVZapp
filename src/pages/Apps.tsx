@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppIconTile from "@/components/AppIconTile";
 import { APPS, CATEGORIES, ECOSYSTEM_STATS, type ZaoApp } from "@/data/apps";
+import { useAppVoteStats, useCastVote, blendRating } from "@/hooks/useAppVotes";
+import { supabase } from "@/lib/supabase";
 import type React from "react";
 
 type SortKey = "featured" | "rating" | "az";
@@ -18,14 +20,50 @@ function cleanUrl(url: string) {
   return url.replace("https://", "").replace("http://", "").replace("www.", "").replace(/\/$/, "");
 }
 
-function Stars({ rating, size = "sm" }: { rating: number; size?: "sm" | "md" }) {
+/**
+ * Shows the blended rating (editorial seed + real community votes) and, when Supabase is
+ * configured, lets a visitor click a star to cast their own vote. Uses span+role="button"
+ * rather than <button> so it can safely sit inside the card's outer <a> without invalid
+ * interactive-in-interactive HTML nesting.
+ */
+function Stars({ app, size = "sm" }: { app: ZaoApp; size?: "sm" | "md" }) {
+  const { data: voteStats } = useAppVoteStats();
+  const castVote = useCastVote();
+  const [hover, setHover] = useState<number | null>(null);
+  const votable = !!supabase;
+
+  const { rating, votes } = blendRating(app.rating, voteStats?.[app.id]);
+  const display = hover ?? rating;
   const px = size === "md" ? 12 : 9;
+
+  function rate(i: number, e: React.SyntheticEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    castVote.mutate({ appId: app.id, rating: i });
+  }
+
   return (
-    <div className="flex items-center gap-0.5" aria-label={`Rated ${rating} out of 5`}>
+    <div
+      className="flex items-center gap-0.5"
+      aria-label={`Rated ${rating} out of 5${votes ? ` from ${votes} community votes` : ""}`}
+      onMouseLeave={() => setHover(null)}
+    >
       {[1, 2, 3, 4, 5].map((i) => (
-        <Star key={i} size={px} className={i <= Math.round(rating) ? "fill-gold text-gold" : "text-white/15"} />
+        <span
+          key={i}
+          role={votable ? "button" : undefined}
+          tabIndex={votable ? 0 : undefined}
+          aria-label={votable ? `Rate ${app.name} ${i} out of 5` : undefined}
+          onClick={votable ? (e) => rate(i, e) : undefined}
+          onKeyDown={votable ? (e) => { if (e.key === "Enter" || e.key === " ") rate(i, e); } : undefined}
+          onMouseEnter={votable ? () => setHover(i) : undefined}
+          className={votable ? "cursor-pointer" : undefined}
+        >
+          <Star size={px} className={i <= Math.round(display) ? "fill-gold text-gold" : "text-white/15"} />
+        </span>
       ))}
       <span className={`ml-1 font-semibold text-white/55 ${size === "md" ? "text-sm" : "text-[10px]"}`}>{rating}</span>
+      {votes > 0 && <span className="ml-1 text-white/30 text-[10px]">({votes})</span>}
     </div>
   );
 }
@@ -136,7 +174,7 @@ function Spotlight({ app }: { app: ZaoApp }) {
           </div>
           <div className="mt-5 flex items-center gap-4 flex-wrap">
             <VisitButton label={app.launchLabel} />
-            <Stars rating={app.rating} size="md" />
+            <Stars app={app} size="md" />
             <span className="text-xs text-white/30 font-medium">{cleanUrl(app.url)}</span>
           </div>
         </div>
@@ -196,7 +234,7 @@ function AppCard({ app, index }: { app: ZaoApp; index: number }) {
         ) : (
           <>
             <div className="mt-auto pt-5 flex items-center justify-between">
-              <Stars rating={app.rating} size="md" />
+              <Stars app={app} size="md" />
               <VisitButton label={app.launchLabel} />
             </div>
             <div className="mt-4 pt-4 text-[11px] text-white/25 font-medium" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>

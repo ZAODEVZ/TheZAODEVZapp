@@ -6,8 +6,8 @@ import logo from "@/assets/thezao-logo.jpg";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Build", href: "/build" },
   { label: "Learn", href: "/learn" },
+  { label: "Build", href: "/build" },
   { label: "Vibe Code", href: "/vibe-code", dot: true },
   { label: "Apps", href: "/apps", dot: true },
   { label: "Projects", href: "/projects" },
@@ -41,13 +41,13 @@ export default function Navbar() {
             <div className="absolute inset-0 rounded-full bg-gold/25 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <img
               src={logo}
-              alt="ThaZao Devs"
+              alt="ThaZao Devz"
               className="relative w-9 h-9 rounded-full"
               style={{ boxShadow: "0 0 0 2px rgba(234,179,8,0.25), 0 4px 16px rgba(0,0,0,0.4)" }}
             />
           </div>
           <span className="font-heading font-extrabold text-lg tracking-tight text-white group-hover:text-gold transition-colors duration-200">
-            Devs
+            Devz
           </span>
         </Link>
 
