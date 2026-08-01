@@ -28,7 +28,7 @@ const initialForm: FormData = {
 const perks = [
   { icon: Globe, title: "Work From Anywhere", desc: "100% remote. Join from any country." },
   { icon: Code2, title: "Cutting-Edge Stack", desc: "Web3, AI, React, Solidity and more" },
-  { icon: Users, title: "Global Community", desc: "Collaborate with devs across USA & Africa" },
+  { icon: Users, title: "Global Community", desc: "Collaborate with devs across the USA, Africa, LATAM, Europe, and Australia" },
 ];
 
 export default function JoinSection() {

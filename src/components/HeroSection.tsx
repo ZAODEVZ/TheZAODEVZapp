@@ -93,13 +93,15 @@ export default function HeroSection() {
               applications across Web3, FinTech, and enterprise platforms. Teams in the{" "}
               <strong className="text-gold font-semibold">USA</strong> and{" "}
               <strong className="text-gold font-semibold">Africa</strong>, with{" "}
-              <strong className="text-gold font-semibold">LATAM</strong> next.
+              <strong className="text-gold font-semibold">LATAM</strong>,{" "}
+              <strong className="text-gold font-semibold">Europe</strong>, and{" "}
+              <strong className="text-gold font-semibold">Australia</strong> next.
             </p>
             <Link
               to="/join"
               className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold hover:translate-x-0.5 transition-transform"
             >
-              Building in Africa or LATAM? Join the network <ArrowRight size={13} />
+              Building anywhere in the world? Join the network <ArrowRight size={13} />
             </Link>
           </motion.div>
 
