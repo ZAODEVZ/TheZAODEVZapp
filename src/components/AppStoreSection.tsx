@@ -33,7 +33,7 @@ function MiniStars({ rating }: { rating: number }) {
   return (
     <div className="flex items-center gap-0.5">
       {[1, 2, 3, 4, 5].map((i) => (
-        <Star key={i} size={9} className={i <= Math.round(rating) ? "fill-gold text-gold" : "text-white/18"} />
+        <Star key={i} size={9} className={i <= Math.round(rating) ? "fill-gold text-gold" : "text-white/20"} />
       ))}
       <span className="ml-1 text-[10px] font-semibold text-white/55">{rating}</span>
     </div>

@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
               <span className="font-heading font-extrabold text-xl tracking-tight text-white">Devz</span>
             </div>
-            <p className="text-sm text-white/38 leading-relaxed">
+            <p className="text-sm text-white/60 leading-relaxed">
               Building world-class software with global teams. Part of the Zao DAO ecosystem.
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function Footer() {
                 <Link
                   key={l.label}
                   to={l.href}
-                  className="text-sm text-white/38 hover:text-gold transition-colors duration-200"
+                  className="text-sm text-white/60 hover:text-gold transition-colors duration-200"
                 >
                   {l.label}
                 </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
                   href={c.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/38 hover:text-gold transition-colors duration-200"
+                  className="text-sm text-white/60 hover:text-gold transition-colors duration-200"
                 >
                   {c.label}
                 </a>
@@ -92,7 +92,7 @@ export default function Footer() {
 
         {/* Bottom rule */}
         <div
-          className="mt-14 pt-8 text-center text-xs text-white/22"
+          className="mt-14 pt-8 text-center text-xs text-white/40"
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
           © {new Date().getFullYear()} ThaZao Devz. All rights reserved.
