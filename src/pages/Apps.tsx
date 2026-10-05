@@ -350,7 +350,7 @@ export default function Apps() {
             </div>
 
             <div className="relative max-w-lg mx-auto">
-              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/28 pointer-events-none" />
+              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}

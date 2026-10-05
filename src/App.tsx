@@ -13,6 +13,7 @@ import Apps from "./pages/Apps";
 import Learn from "./pages/Learn";
 import Build from "./pages/Build";
 import VibeCode from "./pages/VibeCode";
+import Work from "./pages/Work";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/learn" element={<Learn />} />
           <Route path="/build" element={<Build />} />
           <Route path="/vibe-code" element={<VibeCode />} />
+          <Route path="/work" element={<Work />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
