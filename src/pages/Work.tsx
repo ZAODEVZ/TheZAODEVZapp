@@ -33,7 +33,6 @@ const BUILT = [
   { name: "ZAOstock crew board", desc: "Run of show and crew roles for a one-day street festival.", url: "https://zaostock.com/ops", host: "zaostock.com/ops" },
   { name: "ZAO Cowork", desc: "The board the ZAO core team runs its work on.", url: "https://thezao.xyz", host: "thezao.xyz" },
   { name: "ZABAL Gamez", desc: "A builder competition with its own site and leaderboard.", url: "https://zabalgamez.com", host: "zabalgamez.com" },
-  { name: "ZAO on Artizen", desc: "A funding dashboard for ZAO projects on Artizen.", url: "https://za-oartizen.vercel.app", host: "za-oartizen.vercel.app" },
   { name: "ZAOscout", desc: "Reads Reddit, X and Farcaster with no API keys.", url: "https://za-oscout.vercel.app", host: "za-oscout.vercel.app" },
 ];
 
